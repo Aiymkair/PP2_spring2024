@@ -1,5 +1,5 @@
 #Import and create a file
-import 4, 6, 5
+import ex4, ex5, ex6
 
 #ex4 Primme numbers
 def is_prime(num):
@@ -33,10 +33,5 @@ for i in a:
     print(i)
 
 
-#We are ready -> ready are WE (reverse)
-def reversed(s = input()):
-    return s[::-1]
 
-s = reversed()
-print(s)
 
