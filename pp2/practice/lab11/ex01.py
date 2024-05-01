@@ -64,12 +64,11 @@ def delete_data(conn, pattern):
         cur = conn.cursor()
         cur.execute("""
             DELETE FROM phonebook 
-            WHERE full_name LIKE %s 
-            OR phone_numbeк LIKE %s
-            OR operator LIKE %s;
+            WHERE name LIKE %s 
+            OR surname LIKE %s
+            OR phone LIKE %s;
         """, (f'%{pattern}%', f'%{pattern}%',f'%{pattern}%'))
         conn.commit()
         print("Data deleted successfully")
     except psycopg2.Error as e:
         print("Error deleting data:", e)
-    
