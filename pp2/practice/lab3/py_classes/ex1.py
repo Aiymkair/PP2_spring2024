@@ -7,6 +7,6 @@ class strings():
     def printString(self):
         print(self.s.upper())
 
-# name = strings()
-# name.getString()
-# name.printString()
+name = strings()
+name.getString()
+name.printString()

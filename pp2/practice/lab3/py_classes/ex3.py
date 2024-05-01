@@ -10,4 +10,4 @@ class Rectangle(ex2.Shape):
         return self.l*self.w
 
 r = Rectangle(4, 5)
-# print(r.area())
+print(r.area())

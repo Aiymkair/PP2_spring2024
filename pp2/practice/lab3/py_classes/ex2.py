@@ -13,5 +13,5 @@ class Square(Shape):
 
 x1 = Shape()
 x2 = Square(4)
-# x1.area()
-# x2.area()
+x1.area()
+x2.area()
