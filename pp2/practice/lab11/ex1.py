@@ -5,7 +5,7 @@ def connect_to_database():
     try:
         conn = psycopg2.connect(
             host="localhost",
-            database="phonebook",
+            database="phonebook2",
             user="postgres",
             password="Kz@08122005"
         )
@@ -20,7 +20,7 @@ def insert_or_update_user(conn, full_name, phone_number, operator):
     try:
         cur = conn.cursor()
         cur.execute("""
-            INSERT INTO phonebook (full_name, phone_number, operator) 
+            INSERT INTO phonebook2 (full_name, phone_number, operator) 
             VALUES (%s, %s, %s)
             ON CONFLICT (full_name) 
             DO UPDATE SET phone_number = EXCLUDED.phone_number;
@@ -35,7 +35,7 @@ def delete_data(conn, pattern):
     try:
         cur = conn.cursor()
         cur.execute("""
-            DELETE FROM phonebook 
+            DELETE FROM phonebook2 
             WHERE full_name LIKE %s 
             OR phone_numbeк LIKE %s
             OR operator LIKE %s;
@@ -50,7 +50,7 @@ def search_records(conn, pattern):
     try:
         cur = conn.cursor()
         cur.execute("""
-            SELECT * FROM phonebook 
+            SELECT * FROM phonebook2
             WHERE full_name LIKE %s 
             OR phone_number LIKE %s
             OR operator LIKE %s;

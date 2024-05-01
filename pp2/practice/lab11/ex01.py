@@ -1,6 +1,6 @@
 import psycopg2
 
-conn = psycopg2.connect(database="phonebook",
+conn = psycopg2.connect(database="phonebook2",
                         host="localhost",
                         user="postgres",
                         password="Kz@08122005",)
@@ -22,7 +22,7 @@ conn.close()
 
 #Function that returns all records based on a pattern
 def search_pattern(pattern):
-    conn = psycopg2.connect(database="phonebook",
+    conn = psycopg2.connect(database="phonebook2",
                             host="localhost",
                             user="postgres",
                             password="Kz@08122005")
@@ -30,7 +30,7 @@ def search_pattern(pattern):
     cur = conn.cursor()
 
     cur.execute("""
-        SELECT * FROM phonebook
+        SELECT * FROM phonebook2
         WHERE name ILIKE %s OR surname ILIKE %s OR phone ILIKE %s
     """, ('%' + pattern + '%', '%' + pattern + '%', '%' + pattern + '%'))
 
@@ -42,7 +42,7 @@ def search_pattern(pattern):
 
 #Create procedure to insert new user by name and phone, update phone if user already exists
 def insert_user(name, surname, phone):
-    conn = psycopg2.connect(database="phonebook",
+    conn = psycopg2.connect(database="phonebook2",
                             host="localhost",
                             user="postgres",
                             password="Kz@08122005")
@@ -50,7 +50,7 @@ def insert_user(name, surname, phone):
     cur = conn.cursor()
 
     cur.execute("""
-        INSERT INTO phonebook (name, surname, phone)
+        INSERT INTO phonebook2 (name, surname, phone)
         VALUES (%s, %s, %s)
         ON CONFLICT (phone) DO UPDATE SET name=%s, surname=%s
     """, (name, surname, phone, name, surname))
@@ -63,7 +63,7 @@ def delete_data(conn, pattern):
     try:
         cur = conn.cursor()
         cur.execute("""
-            DELETE FROM phonebook 
+            DELETE FROM phonebook2 
             WHERE name LIKE %s 
             OR surname LIKE %s
             OR phone LIKE %s;
